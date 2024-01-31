@@ -1,0 +1,99 @@
+/* Style the header with a grey background and some padding */
+*{box-sizing: border-box;}
+.header {
+    overflow: hidden;
+    background-image: url(../images/Theodor_Kittelsen,_Soria_Moria.png);
+    background-size: cover;
+    background-color: #3F334D;
+    padding: 2%;
+    opacity: 0.5;
+    border: none;
+    box-shadow: 0 4px 8px 0 #1d1820;
+    color: #275887;
+  }
+  .logo img{
+    height: 15%;
+    width: 25%;
+  }
+  body{
+    margin: 0;
+    background-color: #f1e5c3;
+    color: #837957;
+}
+
+
+  a:link {
+    color: #289706;
+  }
+  /* visited link */
+  a:visited {
+    color: #397a04;
+  }
+  .posts{
+    margin:1%;
+    position: absolute;
+    left: 30%;
+    max-width: 25%;
+  }
+  .posts p{
+    margin-left: 25px;
+  }
+  .posts h3{
+    opacity: 40%;
+    margin:0%;
+  }
+  .post{
+    margin:1%;
+    position: absolute;
+    left: 20%;
+    max-width: 50%;
+  }
+  .post p{
+    margin-left: 25px;
+  }
+  .post h3{
+    opacity: 40%;
+    margin:0%;
+  }
+  .post img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+  }
+  .header-right img{
+    float: right;
+    height: 3%;
+    width: 5%;
+  }
+  @media screen and (max-width: 500px) {
+    .header a {
+      float: none;
+      display: block;
+      text-align: center;
+      background-size: fill;
+      padding: 2%;
+    }
+    .header-right {
+      float: none;
+    }
+    .posts{
+      margin:1%;
+      position: absolute;
+      left: 22%;
+      max-width: 25%;
+    }
+    .posts {
+      font-size: 14px;
+    }
+    .post{
+      margin:1%;
+      position: absolute;
+      left: 5%;
+      max-width: 85%;
+    }
+  }
+
+
+
+
