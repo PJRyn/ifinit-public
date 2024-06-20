@@ -9,5 +9,17 @@
    "blog"
   ],
   "title": "Why If{init}"
+ },
+ {
+  "abstract": "A short write up of how this blog was made. Covering all the tools I use to run this blog, from AWS hosting, Python for converting Markdown and how I use Json to display each post and display data on each post.",
+  "date": "2024-06-20T00-41-56.325+1000",
+  "id": "2",
+  "link": "/posts/How_If{init}.html",
+  "tags": [
+   "#webdev",
+   "#blog",
+   "#how"
+  ],
+  "title": "How If{init}"
  }
 ]

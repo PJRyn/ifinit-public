@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title id="title">if{init}</title>
+    <link rel="icon" href="../images/Icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&family=Noto+Serif:ital,wght@1,200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/style.css">
+    <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="header">
+      <a href="../home.html" class="logo"><img src="../images/ifinitlogo.png"></a>
+      <div class="header-right">
+        <a href="../about.html" class="about"><img src="../images/if{init}-about.png"></a>
+      </div>
+    </div>  
+    <div class="row">
+      <div class="column">
+        <div class="post" id="post">
+          
+<h1>How If{init}</h1>
+<p>I wanted to write up a short post how I made my blog, going through all the tools, methods and lessons learned while working on this project. I also wanted to give some reason as to why I made some decisions when working on this website. So I have broken this up into lots of smaller sections covering each tool that I have used.</p>
+<h2>Overview</h2>
+<p>So I am going to split this post into four parts. The first is how I write posts and how they are made into HTML. The second is how the website works for rendering and using 'meta-code' and the third and final part is how I have this blog accessible to the web. Then to finish off I wanted to discuss costs and some lessons learned.</p>
+<h1>Local - How I write and process a post</h1>
+<p>This section is mostly concerned with the things I run on my own machine that are needed for my development pipeline. These aren't are the tools that I use to actually create posts. Some of them are simply programs I use to write while another is a piece of code I wrote explicitly for this blog.</p>
+<h2>Writing Posts with Obsidian</h2>
+<p>This is by and large the most boring part, there isn't a lot of technical knowledge or techniques learned to cover here. But I do want to explain my workflow a bit and how it ties into the larger blog as a whole since I made some conscious decisions that I feel might be a bit interesting to cover. So for writing I wanted to check a few niche boxes that limited my choices of writing tools significantly. </p>
+<ol>
+<li>Easily convert what I wrote into HTML with CSS formatting</li>
+<li>Have some way to store custom meta data and export it to json</li>
+<li>Lightweight</li>
+<li>Templates to make post writing easier</li>
+</ol>
+<p>After looking around I settled on an open source program called obsidian. This is because it writes in Markdown and also lets me have YAML code in the header of each post. It also lets me use templates so I can easily start writing a post. Since it also doesn't have much going on under the hood it is super lightweight and can run easily on almost any computer. As an added bonus too it has plugins and themes to make the writing experience even more personalised. I also was confident about its longevity since it is open source meaning the community behind it can keep it going for a long time.</p>
+<p>This means my workflow for Obsidian is rather simple:
+1. Create a post
+2. give my post a title
+3. insert the template
+4. fill in details like post number, tags and an abstract
+5. then write!</p>
+<p>This creates as little friction for me as possible which is important as writing up what you did is far less interesting than <em>doing</em> stuff. But it is still a great skill to have and a great way to present my work.</p>
+<h2>Python - Markdown to HTML</h2>
+<p>One other reason for choosing Markdown is largely because of the ease of converting it to HTML. So I put together a small script that lets me convert each of the posts I had written to HTML. It also takes the YAML code at the top of each post and adds it to a Json file I called metadata. With the converted posts I insert it into a template and suddenly I have a new and I can update the metadata with it. This means I can easily write a new post run the converter and have a formatted version ready to go! The Json converter is also a fantastic tool since it lets me keep data on each of the posts I wrote like a title, link, id, publish time and an abstract. The code can be seen here with a bit more of a breakdown for those who are interested:
+<em>Here is a link to the GitHub page if you want to see the code:
+<a href="https://github.com/PJRyn/Python-Markdown-Converter-Tool">PythonToo</a>l</em></p>
+<h2>GitHub</h2>
+<p>The last thing I do locally is I use the python code to put the new files into my GitHub folder that is connected to my blog through AWS pipeline. This means that any changes can quickly push the new posts onto my blog quickly. Or if I want to save a draft I can quickly and easily do that by creating a branch. It offers great way to publish my new posts and work that has minimal friction.</p>
+<h1>The blog - the website itself</h1>
+<p>I built this website from scratch, which I think is no surprise to anyone reading this. But I am still proud of it even if it isn't wining an UI design awards. So I went for something simple to match my relatively simple posts. Although I do have every intention on iteration upon it to make improvements. But for the time being simple is great since I know it all works and I can fix things when they break without too much of a headache.</p>
+<p>For the most part this site doesn't have too much going on with just basic HTML and CSS. But one thing I wanted to do was to have a dynamic list of every post that I could down the line add sorting methods to. I eventually decided that on the main page of the website I would load a Json file that has stored within a each post and some details about it, like the date of posting, ID number, some tags, a description and a link to the actual post. Then I used some Jquery to display this Json formatted as a list of each post, giving the title which using the link from the Json links to the blog page for it and a short description of the post. This I though was a really neat idea to handle how users can see each post and keeping it dynamic so I can easily just add to the metadata Json when I use my python converting script; meaning I don't need to fiddle around and add in new information each time I make a new post. It also keeps to using rather simple methods of content delivery which is something I absolute wanted to maintain with this blog.</p>
+<h1>Hosting through AWS</h1>
+<p>Learning more about AWS was probably my main cause for beginning this project. I had done a lot of work with cloud computing and SQL storage provided by AWS, but there is a lot to learn when working with AWS since they provide a service for almost everything under the sun. I also know that AWS is a desirable skill for many companies since knowing how to navigate the labyrinthine payment structure and come out unscathed is a very important skill. The other reason for using this method to host my website is that it lets me learn how web hosting actually works without putting my network at risk with a rinky-dink server that would put my network directly at risk. </p>
+<p>So to start off the most important thing that holds this blog together is the actual files for it. All of which are stored in an AWS S3 bucket. these buckets are quite similar to GitHub repos. A place you can store important files in an external service offering protection for them. The biggest advantage of an S3 bucket however is the ability to link it with other services, which is exactly what I did here. The first one was using the AWS pipeline service to connect the S3 bucket to a GitHub repo of the blog meaning I can just push to my main branch and the website will update as well. This massively helps lower the friction of posting meaning after a push I can instantly see the changes.</p>
+<p>The way though that I can use the S3 bucket to host and deliver the files is through the CloudFront service AWS provides. It takes in the files within the S3 bucket and delivers them to users who hop onto the website. CloudFront also gives me another whole toolbox of diagnostics and reports of users entering the site as well as other tools for ensuring the site is safe. </p>
+<p>However, for all of this to work I needed to make sure that people could have a site to visit. To do that I forked out around $10 - $20 AUD to register the if-init domain. Something that I really didn't mind too much. I know there are other places you can purchase domains and potentially for less but I wanted to keep the process of setting up this site as easy as possible. So I decided to go with the Amazon Certificate manager. I didn't regret this at all since connecting it up was very easy, and didn't take much time at all.</p>
+<p>The final thing that the blog needed was a DNS service which hosts the domain and allows users to connect to the blog. This is handled by Amazons Route 53 service which then gets connected to the CloudFront service and now runs with ease. That means with the viable certificates too I had a public website!</p>
+<p>Overall I have found using AWS a relatively painless experience. This is because most questions I had were an easy google away. But I wont lie there were a few buttons and tick boxes I was nervous about when setting up the blog. In the end though it was a fantastic way to learn more of the services AWS provides and allowed me to create a great dev-ops environment to practice in with a pipeline of multiple services. I feel that if any perspective blog owners who are interested in the cost of running a blog through AWS would be interested in how much it costs me. Roughly $20 AUD per month for the moment, which does add up annually I suppose but I feel that the price of lunch in the city isn't that bad to run a website that is HTTP secured and hosts my portfolio of projects.</p>
+<h2>Lessons learned</h2>
+<p>This blog has been a fantastic project to take on. Initially I was very nervous to attempt it, but really it wasn't too bad at all! While it has taken me a while to get to this point I am super proud of whats here, warts and all. It has helped me develop the confidence to actually post content online about what I am learning and has challenged me at every level to learn and improve in a totally unguided way. 
+I have picked up way more knowledge of JavaScript, AWS, web hosting and creating pipelines. But the most valuable skill it has given me is the guiding mantra of "better done than none". That has led me through most of developing this project. It isn't a looker now, and doesn't have a lot of content. But that's part of the point, having something to come back to and improve upon is a fantastic motivation to keep up skilling! This is about having a simple base to build upon. So thank you for taking the time to read how this ramshackle site is put together, and I hope you can check out the other posts or keep an eye out as I continue this journey.</p>
+<p>Cheers,
+Perry</p>
+        </div>
+      </div>
+    </div> 
+	<script src="../scripts/index.js"></script>
+  </body>
+</html>
